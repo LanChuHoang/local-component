@@ -31,13 +31,12 @@ def test_produce_message():
 
 @test_case
 def test_kafka_get_metadata():
-    metadata = producer.list_topics(timeout=5)
-    logging.info(f"Metadata: {metadata}")
+    return producer.list_topics(timeout=5)
 
 
 @test_case
 def test_get_schema_list():
-    schema_registry_client.get_subjects()
+    return schema_registry_client.get_subjects()
 
 
 def main():
