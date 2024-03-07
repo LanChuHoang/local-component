@@ -45,7 +45,7 @@ services:
       KAFKA_LOG_DIRS: "/tmp/kraft-combined-logs"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false" # Disable auto topic creation.
     volumes:
-      - kafka_data:/tmp/kraft-combined-logs # Mounting a named volume for Kafka data
+      - ./data:/tmp/kraft-combined-logs # Mounting a named volume for Kafka data
       - ./scripts/update_run.sh:/tmp/update_run.sh
     command: 'bash -c ''if [ ! -f /tmp/update_run.sh ]; then echo "ERROR: Did you forget the update_run.sh file that came with this docker-compose.yml file?" && exit 1 ; else /tmp/update_run.sh && /etc/confluent/docker/run ; fi'''
 
@@ -89,7 +89,6 @@ services:
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect0
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
-
-volumes:
-  kafka_data:
-    driver: local
+# volumes:
+#   kafka_data1:
+#     # driver: local
