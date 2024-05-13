@@ -1,0 +1,14 @@
+version: "3"
+services:
+  master:
+    container_name: "citus-container"
+    image: "citusdata/citus"
+    ports:
+      - 5434:5432
+    environment:
+      # POSTGRES_USER: "${POSTGRES_USER:-postgres}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-postgres}"
+      # PGUSER: "${POSTGRES_USER:-postgres}"
+      # PGPASSWORD: "${POSTGRES_PASSWORD:-postgres}"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
